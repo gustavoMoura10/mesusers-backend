@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mesusers-dev:
+    image: postgres
+    container_name: mesusers_dev
+    environment:
+      POSTGRES_DB: mesusers-dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+
+  mesusers-test:
+    image: postgres
+    container_name: mesusers_test
+    environment:
+      POSTGRES_DB: mesusers-test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata-test:/var/lib/postgresql/data
+
+volumes:
+  pgdata-dev:
+  pgdata-test:
